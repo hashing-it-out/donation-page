@@ -3882,7 +3882,7 @@
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
-  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxP.ttf) format('truetype');
+  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v19/KFOmCnqEu92Fr1Mu4mxP.ttf) format('truetype');
 }
 .ui.primary.button:hover {
   -webkit-box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.3) inset, 0px 2px 3px 0px rgba(0, 0, 0, 0.35) !important;

@@ -12,7 +12,7 @@ let ethTotal, ltcTotal, btcTotal
 const coinsApiBase = 'https://api.cryptonator.com/api/ticker/'
 const coinsApiLinks = {
     eth: `${coinsApiBase}eth-usd`,
-    ltc: `${coinsApiBase}ltc-usd`,
+    // ltc: `${coinsApiBase}ltc-usd`,
     btc: `${coinsApiBase}btc-usd`,
 }
 
@@ -32,7 +32,7 @@ class CryptoContainer extends Component {
         let fetchCalls = [
             Axios.get(`${coinsApiLinks.btc}`),
             Axios.get(`${coinsApiLinks.eth}`),
-            Axios.get(`${coinsApiLinks.ltc}`),
+            // Axios.get(`${coinsApiLinks.ltc}`),
         ];
         Promise.all(fetchCalls)
             .then(responseJson => {
@@ -93,31 +93,31 @@ class CryptoContainer extends Component {
                 ...ethTxns,
                 ...oldTxns
             ])
-        } else if (currency === 'ltc') {
-            let ltcTxns = txns.map(obj => {
-                obj.usd_value = parseFloat(parseFloat(this.state.prices.LTC) * parseFloat(obj.value)).toFixed(2)
-                return obj
-            })
-            ltcTotal = txns.reduce((acc, cur) => {
-                return acc + cur.value
-            }, 0)
-            ltcTotal = parseFloat(ltcTotal).toFixed(2)
-            let oldTotals = this.state.totals
-            let oldTxns = this.state.txns
-            this.setState({
-                txns: [
-                    ...ltcTxns,
-                    ...oldTxns
-                ],
-                totals: {
-                    ltc: ltcTotal,
-                    ...oldTotals,
-                }
-            })
-            this.handleReindex([
-                ...ltcTxns,
-                ...oldTxns
-            ])
+        // } else if (currency === 'ltc') {
+        //     let ltcTxns = txns.map(obj => {
+        //         obj.usd_value = parseFloat(parseFloat(this.state.prices.LTC) * parseFloat(obj.value)).toFixed(2)
+        //         return obj
+        //     })
+        //     ltcTotal = txns.reduce((acc, cur) => {
+        //         return acc + cur.value
+        //     }, 0)
+        //     ltcTotal = parseFloat(ltcTotal).toFixed(2)
+        //     let oldTotals = this.state.totals
+        //     let oldTxns = this.state.txns
+        //     this.setState({
+        //         txns: [
+        //             ...ltcTxns,
+        //             ...oldTxns
+        //         ],
+        //         totals: {
+        //             ltc: ltcTotal,
+        //             ...oldTotals,
+        //         }
+        //     })
+        //     this.handleReindex([
+        //         ...ltcTxns,
+        //         ...oldTxns
+        //     ])
         } else if (currency === 'btc') {
             let btcTxns = txns.map(obj => {
                 obj.usd_value = parseFloat(parseFloat(this.state.prices.BTC) * parseFloat(obj.value)).toFixed(2)
@@ -161,8 +161,8 @@ class CryptoContainer extends Component {
                 content: <EthContainer onTxChange={this.handleTxChange} />, key: 1 }},
             { menuItem: 'BTC', pane: {
                 content: <BtcContainer onTxChange={this.handleTxChange} />, key: 2 }},
-            { menuItem: 'LTC', pane: {
-                content: <LtcContainer onTxChange={this.handleTxChange} />, key: 3 }},
+            // { menuItem: 'LTC', pane: {
+            //     content: <LtcContainer onTxChange={this.handleTxChange} />, key: 3 }},
         ]
         return <div>
             <hr />

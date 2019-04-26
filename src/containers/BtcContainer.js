@@ -33,7 +33,8 @@ class BtcContainer extends Component {
         ];
         return Promise.all(fetchCalls)
             .then(responseJson => {
-                return responseJson[0].data.data.list ? [].concat.apply(responseJson[0].data.data.list) : []
+                    console.log(responseJson)
+                    return responseJson[0].data.data && responseJson[0].data.data.list ? [].concat.apply(responseJson[0].data.data.list) : []
             })
     };
 
